@@ -22,4 +22,3 @@ Maptime is a plugin for the XASECO2 server controller powering Trackmania2 serve
 * custom admin rights using XASECO2 api
 * replace filename storage with map's uid and add commented map name
 * lament usage of XASECO2's xml parser
-* add /limit default num to set default time used across maps in game

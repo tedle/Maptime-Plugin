@@ -56,7 +56,7 @@ function maptime_saveconfig ($aseco, $config) {
     // So we do uh... this... :(
     $xml_string = "<?xml version=\"1.0\" encoding=\"utf-8\"?".">" . CRLF
                 . "<maptime>" . CRLF
-                . "<!-- Default round timer, in minutes -->" . CRLF
+                . "\t<!-- Default round timer, in minutes -->" . CRLF
                 . "\t<default>" . $config['MAPTIME']['DEFAULT'][0]
                 . "</default>" . CRLF
                 . "\t<maplist>" . CRLF;
@@ -134,13 +134,13 @@ function chat_limit ($aseco, $command) {
     $config = maptime_loadconfig($aseco);
 
     $user = $command['author'];
-    $args = $command['params'];
+    $args = explode(' ', $command['params']);
     $login = $user->login;
 
     // Check for admin rights
     if ($aseco->isMasterAdmin($user) || $aseco->isAdmin($user)) {
         // Remove current map from config
-        if ($args == "remove") {
+        if ($args[0] == "remove") {
             $key = maptime_findmapkey($aseco, $config);
             if ($key !== false) {
                 unset($config['MAPTIME']['MAPLIST'][0]['MAP'][$key]);
@@ -150,15 +150,15 @@ function chat_limit ($aseco, $command) {
                 $aseco->client->query('ChatSendServerMessage', $message);
             }
         // Remove all maps from config
-        } elseif ($args == "removeall") {
+        } elseif ($args[0] == "removeall") {
             $config['MAPTIME']['MAPLIST'][0]['MAP'] = array();
             $aseco->console('[Maptime] All custom limits reverted to default');
             $message = $aseco->formatColors('{#server}> {#highlite}'
                 . 'Time limit for all maps reverted to default');
             $aseco->client->query('ChatSendServerMessage', $message);
         // Set time limit for current map
-        } elseif (is_numeric($args)) {
-            $limit = floatval($args);
+        } elseif (is_numeric($args[0])) {
+            $limit = floatval($args[0]);
             $key = maptime_findmapkey($aseco, $config);
             // Map is already in config, we do an update
             if ($key !== false) {
@@ -177,6 +177,13 @@ function chat_limit ($aseco, $command) {
             }
             $message = $aseco->formatColors('{#server}> {#highlite}'
                 . 'Custom time limit of ' . $limit . 'min set for this map');
+            $aseco->client->query('ChatSendServerMessage', $message);
+        // Set the default time limit for all maps
+        } elseif ($args[0] == "default" && is_numeric($args[1])) {
+            $limit = floatval($args[1]);
+            $config['MAPTIME']['DEFAULT'][0] = $limit;
+            $message = $aseco->formatColors('{#server}> {#highlite}'
+                . 'Server default time limit of ' . $limit . 'min set');
             $aseco->client->query('ChatSendServerMessage', $message);
         // Incorrect command usage
         } else {
