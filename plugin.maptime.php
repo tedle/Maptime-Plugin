@@ -182,6 +182,7 @@ function chat_limit ($aseco, $command) {
         } elseif ($args[0] == "default" && is_numeric($args[1])) {
             $limit = floatval($args[1]);
             $config['MAPTIME']['DEFAULT'][0] = $limit;
+            $aseco->console('[Maptime] Default limit of ' . $limit . ' set');
             $message = $aseco->formatColors('{#server}> {#highlite}'
                 . 'Server default time limit of ' . $limit . 'min set');
             $aseco->client->query('ChatSendServerMessage', $message);
