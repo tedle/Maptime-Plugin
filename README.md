@@ -14,7 +14,7 @@ Maptime is a plugin for the XASECO2 server controller powering Trackmania2 serve
 1. Copy plugin.maptime.php to the xaseco2/plugins folder
 *  Open xaseco2/plugins.xml in a text editor
 *  Add an entry for plugin.maptime.php, make sure the entry is __after__
-   plugin.rasp_jukebox.php else this plugin will not work
+   plugin.rasp\_jukebox.php else this plugin will not work
 *  Start (or restart) XASECO2
 
 ##TODO
@@ -22,6 +22,4 @@ Maptime is a plugin for the XASECO2 server controller powering Trackmania2 serve
 * custom admin rights using XASECO2 api
 * replace filename storage with map's uid and add commented map name
 * lament usage of XASECO2's xml parser
-* add help message if /limit is used wrong
-* add global chat message when /limit is used
 * add /limit default num to set default time used across maps in game
