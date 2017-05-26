@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<locales>
+    <plugin_description>
+        <en>Allows custom time limits on a per map basis for Trackmania2 dedicated servers</en>
+    </plugin_description>
+    <chat_limit_description>
+        <en>Set custom time limits on a per map basis</en>
+    </chat_limit_description>
+    <set_limit>
+        <en>{#server}&gt; {#emotic}Custom time limit of {#highlite}{1}min {#emotic}set for {#highlite}{2}</en>
+    </set_limit>
+    <set_default_limit>
+        <en>{#server}&gt; {#emotic}Server default time limit of {#highlite}{1}min {#emotic}set</en>
+    </set_default_limit>
+    <remove_limit>
+        <en>{#server}&gt; {#highlite}{1} {#emotic}time limit reverted to default</en>
+    </remove_limit>
+    <remove_all_limits>
+        <en>{#server}&gt; {#emotic}Time limit for {#highlite}all maps {#emotic}reverted to default</en>
+    </remove_all_limits>
+    <usage_error>
+        <en>{#server}&gt; {#error}Usage: /limit &lt;num&gt;, /limit remove, /limit removeall, /limit default &lt;num&gt;</en>
+    </usage_error>
+    <admin_error>
+        <en>{#server}&gt; {#error}You must be an admin to set a time limit</en>
+    </admin_error>
+</locales>
